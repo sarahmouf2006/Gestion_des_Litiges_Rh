@@ -50,10 +50,10 @@
     <!-- Quick Actions -->
     <div class="row mt-4">
         <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('jugement.index') }}" class="card-modern text-decoration-none text-center h-100 d-block">
+            <a href="{{ route('litiges.index') }}" class="card-modern text-decoration-none text-center h-100 d-block">
                 <i class="fas fa-gavel fa-3x text-primary mb-3"></i>
-                <h5>Gestion des Jugements</h5>
-                <p class="text-muted small">Consulter et gérer les jugements</p>
+                <h5>Gestion des Litiges</h5>
+                <p class="text-muted small">Consulter et gérer les litiges</p>
             </a>
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
@@ -71,7 +71,7 @@
             </a>
         </div>
         <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('jugement.create') }}" class="card-modern text-decoration-none text-center h-100 d-block">
+            <a href="{{ route('jugements.create') }}" class="card-modern text-decoration-none text-center h-100 d-block">
                 <i class="fas fa-plus-circle fa-3x text-danger mb-3"></i>
                 <h5>Nouveau Dossier</h5>
                 <p class="text-muted small">Créer un nouveau litige</p>

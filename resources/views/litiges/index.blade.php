@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Gestion des Jugements')
+@section('title', 'Gestion des Litiges')
 
 @section('content')
 <div class="container-fluid">
@@ -9,69 +9,69 @@
             <!-- Search Form Card -->
             <div class="card-modern mb-4">
                 <h2 class="text-center mb-4">
-                    <i class="fas fa-search me-2"></i>بحث في الأحكام
+                    <i class="fas fa-search me-2"></i>بحث في النزاعات
                 </h2>
-                <form action="{{ route('jugements.index') }}" method="GET" class="search-form">
+                <form action="{{ route('litiges.index') }}" method="GET" class="search-form">
                     <div class="row g-3">
                         <div class="col-md-3">
                             <label for="رقم_تأجير" class="form-label">رقم تأجير:</label>
-                            <input type="text" name="رقم تأجير" id="رقم_تأجير"
-                                   class="form-control"
+                            <input type="text" name="رقم تأجير" id="رقم_تأجير" 
+                                   class="form-control" 
                                    value="{{ $inputs['رقم تأجير'] ?? '' }}"
                                    placeholder="أدخل رقم التأجير">
                         </div>
                         <div class="col-md-3">
                             <label for="الاسم_و_النسب" class="form-label">الاسم و النسب:</label>
-                            <input type="text" name="الاسم و النسب" id="الاسم_و_النسب"
-                                   class="form-control"
+                            <input type="text" name="الاسم و النسب" id="الاسم_و_النسب" 
+                                   class="form-control" 
                                    value="{{ $inputs['الاسم و النسب'] ?? '' }}"
                                    placeholder="أدخل الاسم الكامل">
                         </div>
                         <div class="col-md-3">
                             <label for="الإطار" class="form-label">الإطار:</label>
-                            <input type="text" name="الإطار" id="الإطار"
-                                   class="form-control"
+                            <input type="text" name="الإطار" id="الإطار" 
+                                   class="form-control" 
                                    value="{{ $inputs['الإطار'] ?? '' }}"
                                    placeholder="أدخل الإطار">
                         </div>
                         <div class="col-md-3">
                             <label for="نوع_العملية" class="form-label">نوع العملية:</label>
-                            <input type="text" name="نوع العملية" id="نوع_العملية"
-                                   class="form-control"
+                            <input type="text" name="نوع العملية" id="نوع_العملية" 
+                                   class="form-control" 
                                    value="{{ $inputs['نوع العملية'] ?? '' }}"
                                    placeholder="أدخل نوع العملية">
                         </div>
                         <div class="col-md-3">
                             <label for="الفترة" class="form-label">الفترة:</label>
-                            <input type="text" name="الفترة" id="الفترة"
-                                   class="form-control"
+                            <input type="text" name="الفترة" id="الفترة" 
+                                   class="form-control" 
                                    value="{{ $inputs['الفترة'] ?? '' }}"
                                    placeholder="أدخل الفترة">
                         </div>
                         <div class="col-md-3">
                             <label for="المديرية_الإقليمية" class="form-label">المديرية الإقليمية:</label>
-                            <input type="text" name="المديرية الإقليمية" id="المديرية_الإقليمية"
-                                   class="form-control"
+                            <input type="text" name="المديرية الإقليمية" id="المديرية_الإقليمية" 
+                                   class="form-control" 
                                    value="{{ $inputs['المديرية الإقليمية'] ?? '' }}"
                                    placeholder="أدخل المديرية الإقليمية">
                         </div>
                         <div class="col-md-3">
                             <label for="تاريخ_التسوية" class="form-label">تاريخ التسوية:</label>
-                            <input type="date" name="تاريخ التسوية" id="تاريخ_التسوية"
-                                   class="form-control"
+                            <input type="date" name="تاريخ التسوية" id="تاريخ_التسوية" 
+                                   class="form-control" 
                                    value="{{ $inputs['تاريخ التسوية'] ?? '' }}">
                         </div>
                         <div class="col-md-3">
                             <label for="مبلغ_التعويض" class="form-label">مبلغ التعويض (من):</label>
-                            <input type="number" name="مبلغ التعويض" id="مبلغ_التعويض"
-                                   class="form-control"
+                            <input type="number" name="مبلغ التعويض" id="مبلغ_التعويض" 
+                                   class="form-control" 
                                    value="{{ $inputs['مبلغ التعويض'] ?? '' }}"
                                    placeholder="أدخل الحد الأدنى">
                         </div>
                         <div class="col-md-3">
                             <label for="التسوية_النهائية" class="form-label">التسوية النهائية:</label>
-                            <input type="text" name="التسوية النهائية" id="التسوية_النهائية"
-                                   class="form-control"
+                            <input type="text" name="التسوية النهائية" id="التسوية_النهائية" 
+                                   class="form-control" 
                                    value="{{ $inputs['التسوية النهائية'] ?? '' }}"
                                    placeholder="أدخل التسوية النهائية">
                         </div>
@@ -116,7 +116,7 @@
                             <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-search me-2"></i>بحث
                             </button>
-                            <a href="{{ route('jugements.index') }}" class="btn btn-secondary">
+                            <a href="{{ route('litiges.index') }}" class="btn btn-secondary">
                                 <i class="fas fa-redo me-2"></i>إعادة تعيين
                             </a>
                         </div>
@@ -126,12 +126,12 @@
 
             <!-- Action Buttons -->
             <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
-                <a href="{{ route('jugements.create') }}" class="btn btn-success" title="إضافة قضية جديدة">
+                <a href="{{ route('jugement.create') }}" class="btn btn-success" title="إضافة قضية جديدة">
                     <i class="fas fa-plus-circle me-2"></i>إضافة قضية جديدة
                 </a>
                 <div class="d-flex gap-2">
                     @if(isset($jugements) && $jugements->count() > 0)
-                        <a href="{{ route('jugements.export', request()->query()) }}" class="btn btn-info" title="تصدير القائمة">
+                        <a href="{{ route('jugement.export', request()->query()) }}" class="btn btn-info" title="تصدير القائمة">
                             <i class="fas fa-file-export me-2"></i>تصدير القائمة
                         </a>
                     @endif
@@ -165,24 +165,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if(isset($jugements) && $jugements->count() > 0)
-                                @foreach($jugements as $jugement)
+                            @if(isset($litiges) && $litiges->count() > 0)
+                                @foreach($litiges as $litige)
                                 <tr>
-                                    <td>{{ $jugement->{'رقم تأجير'} }}</td>
-                                    <td>{{ $jugement->{'الاسم و النسب'} }}</td>
-                                    <td>{{ $jugement->{'الإطار'} }}</td>
-                                    <td>{{ $jugement->{'نوع العملية'} }}</td>
-                                    <td>{{ $jugement->{'الفترة'} }}</td>
-                                    <td>{{ $jugement->{'ملاحظات'} }}</td>
-                                    <td>{{ $jugement->Aref }}</td>
-                                    <td>{{ $jugement->{'المديرية الإقليمية'} }}</td>
-                                    <td>{{ $jugement->{'ملاحظات1'} }}</td>
-                                    <td>{{ $jugement->{'تاريخ التسوية'} }}</td>
-                                    <td>{{ $jugement->{'مبلغ التعويض'} }}</td>
-                                    <td>{{ $jugement->{'تاريخ الالتحاق'} }}</td>
-                                    <td>{{ $jugement->{'التسوية النهائية'} }}</td>
+                                    <td>{{ $litige->{'رقم تأجير'} }}</td>
+                                    <td>{{ $litige->{'الاسم و النسب'} }}</td>
+                                    <td>{{ $litige->{'الإطار'} }}</td>
+                                    <td>{{ $litige->{'نوع العملية'} }}</td>
+                                    <td>{{ $litige->{'الفترة'} }}</td>
+                                    <td>{{ $litige->{'ملاحظات'} }}</td>
+                                    <td>{{ $litige->Aref }}</td>
+                                    <td>{{ $litige->{'المديرية الإقليمية'} }}</td>
+                                    <td>{{ $litige->{'ملاحظات1'} }}</td>
+                                    <td>{{ $litige->{'تاريخ التسوية'} }}</td>
+                                    <td>{{ $litige->{'مبلغ التعويض'} }}</td>
+                                    <td>{{ $litige->{'تاريخ الالتحاق'} }}</td>
+                                    <td>{{ $litige->{'التسوية النهائية'} }}</td>
                                     <td>
-                                        @if($jugement->{'منفذة أو غير منفذة'})
+                                        @if($litige->{'منفذة أو غير منفذة'})
                                             <span class="badge bg-success">منفذة</span>
                                         @else
                                             <span class="badge bg-danger">غير منفذة</span>
@@ -190,14 +190,14 @@
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2 justify-content-center">
-                                            <a href="{{ route('jugements.edit', $jugement->id) }}"
+                                            <a href="{{ route('litiges.edit', $litige->id) }}"
                                                class="btn btn-warning btn-sm"
                                                title="تعديل">
                                                 <i class="fas fa-pen-to-square"></i>
                                             </a>
-                                            <form action="{{ route('jugements.destroy', $jugement->id) }}"
+                                            <form action="{{ route('litiges.destroy', $litige->id) }}"
                                                   method="POST"
-                                                  onsubmit="return confirm('هل أنت متأكد من حذف هذا الحكم؟');"
+                                                  onsubmit="return confirm('هل أنت متأكد من حذف هذا النزاع؟');"
                                                   class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
@@ -243,7 +243,7 @@ function clearTableAndInputs() {
     document.getElementById('منفذة_أو_غير_منفذة').value = '';
 
     // Redirect to clear filters
-    window.location.href = '{{ route("jugements.index") }}';
+    window.location.href = '{{ route("jugement.index") }}';
 }
 </script>
 @endpush

@@ -78,27 +78,114 @@
                     <label for="email" class="form-label">
                         <i class="fas fa-envelope me-2"></i>Email :
                     </label>
-                    <input id="email" 
-                           type="email" 
-                           name="email" 
-                           class="form-control" 
-                           placeholder="Votre email" 
-                           value="{{ old('email') }}" 
+                    <input id="email"
+                           type="email"
+                           name="email"
+                           class="form-control"
+                           placeholder="Votre email professionnel"
+                           value="{{ old('email') }}"
                            required>
                     @error('email')
                         <small class="error">{{ $message }}</small>
                     @enderror
                 </div>
 
+                <!-- Professional Identity Fields -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="matricule" class="form-label">
+                                <i class="fas fa-id-card me-2"></i>Matricule RH :
+                            </label>
+                            <input id="matricule"
+                                   type="text"
+                                   name="matricule"
+                                   class="form-control"
+                                   placeholder="Votre matricule RH"
+                                   value="{{ old('matricule') }}">
+                            @error('matricule')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="grade" class="form-label">
+                                <i class="fas fa-user-tie me-2"></i>Grade :
+                            </label>
+                            <input id="grade"
+                                   type="text"
+                                   name="grade"
+                                   class="form-control"
+                                   placeholder="Votre grade"
+                                   value="{{ old('grade') }}">
+                            @error('grade')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="direction" class="form-label">
+                        <i class="fas fa-building me-2"></i>Direction :
+                    </label>
+                    <select id="direction" name="direction" class="form-control">
+                        <option value="DRH & Formation des Cadres" {{ old('direction') == 'DRH & Formation des Cadres' ? 'selected' : '' }}>DRH & Formation des Cadres</option>
+                        <option value="Direction Régionale" {{ old('direction') == 'Direction Régionale' ? 'selected' : '' }}>Direction Régionale</option>
+                        <option value="Direction Provinciale" {{ old('direction') == 'Direction Provinciale' ? 'selected' : '' }}>Direction Provinciale</option>
+                        <option value="Autre" {{ old('direction') == 'Autre' ? 'selected' : '' }}>Autre</option>
+                    </select>
+                    @error('direction')
+                        <small class="error">{{ $message }}</small>
+                    @enderror
+                </div>
+
+                <!-- Work Contact Fields -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="telephone_bureau" class="form-label">
+                                <i class="fas fa-phone me-2"></i>Téléphone bureau :
+                            </label>
+                            <input id="telephone_bureau"
+                                   type="tel"
+                                   name="telephone_bureau"
+                                   class="form-control"
+                                   placeholder="05XX-XXXXXX"
+                                   value="{{ old('telephone_bureau') }}">
+                            @error('telephone_bureau')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="bureau" class="form-label">
+                                <i class="fas fa-map-marker-alt me-2"></i>Bureau :
+                            </label>
+                            <input id="bureau"
+                                   type="text"
+                                   name="bureau"
+                                   class="form-control"
+                                   placeholder="Numéro de bureau"
+                                   value="{{ old('bureau') }}">
+                            @error('bureau')
+                                <small class="error">{{ $message }}</small>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="mot_de_passe" class="form-label">
                         <i class="fas fa-lock me-2"></i>Mot de passe :
                     </label>
-                    <input id="mot_de_passe" 
-                           type="password" 
-                           name="mot_de_passe" 
-                           class="form-control" 
-                           placeholder="Mot de passe" 
+                    <input id="mot_de_passe"
+                           type="password"
+                           name="mot_de_passe"
+                           class="form-control"
+                           placeholder="Mot de passe"
                            required>
                     @error('mot_de_passe')
                         <small class="error">{{ $message }}</small>
