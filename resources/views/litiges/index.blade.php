@@ -130,8 +130,8 @@
                     <i class="fas fa-plus-circle me-2"></i>إضافة قضية جديدة
                 </a>
                 <div class="d-flex gap-2">
-                    @if(isset($jugements) && $jugements->count() > 0)
-                        <a href="{{ route('jugement.export', request()->query()) }}" class="btn btn-info" title="تصدير القائمة">
+                    @if(isset($litiges) && $litiges->count() > 0)
+                        <a href="{{ route('litiges.export', request()->query()) }}" class="btn btn-info" title="تصدير القائمة">
                             <i class="fas fa-file-export me-2"></i>تصدير القائمة
                         </a>
                     @endif
@@ -243,7 +243,7 @@ function clearTableAndInputs() {
     document.getElementById('منفذة_أو_غير_منفذة').value = '';
 
     // Redirect to clear filters
-    window.location.href = '{{ route("jugement.index") }}';
+    window.location.href = '{{ route("litiges.index") }}';
 }
 </script>
 @endpush

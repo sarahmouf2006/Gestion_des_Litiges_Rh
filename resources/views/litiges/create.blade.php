@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'إضافة قضية جديدة')
+@section('title', 'إضافة نزاع جديد')
 
 @section('content')
 <div class="container-fluid">
@@ -8,7 +8,7 @@
         <div class="col-lg-10 col-xl-8">
             <div class="card-modern">
                 <h2 class="text-center mb-4">
-                    <i class="fas fa-plus-circle me-2"></i>إضافة قضية جديدة
+                    <i class="fas fa-plus-circle me-2"></i>إضافة نزاع جديد
                 </h2>
 
                 @if ($errors->any())
@@ -23,7 +23,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('jugement.store') }}" method="POST">
+                <form action="{{ route('litiges.store') }}" method="POST">
                     @csrf
 
                     <div class="row g-3">
@@ -170,7 +170,7 @@
                     </div>
 
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                        <a href="{{ route('jugement.index') }}" class="btn btn-secondary">
+                        <a href="{{ route('litiges.index') }}" class="btn btn-secondary">
                             <i class="fas fa-times me-2"></i>إلغاء
                         </a>
                         <button type="submit" class="btn btn-primary">
