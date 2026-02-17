@@ -43,8 +43,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('jugements.index') }}">
-                                <i class="fas fa-gavel me-1"></i> Jugement
+                            <a class="nav-link" href="{{ route('litiges.index') }}">
+                                <i class="fas fa-gavel me-1"></i> Litiges
                             </a>
                         </li>
                         <li class="nav-item">
@@ -102,8 +102,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('jugements.index') }}">
-                                        <i class="fas fa-chevron-left me-2"></i>Gestion des Jugements
+                                    <a href="{{ route('litiges.index') }}">
+                                        <i class="fas fa-chevron-left me-2"></i>Gestion des Litiges
                                     </a>
                                 </li>
                                 <li>
@@ -117,7 +117,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('jugements.create') }}">
+                                    <a href="{{ route('litiges.create') }}">
                                         <i class="fas fa-chevron-left me-2"></i>Nouveau Dossier
                                     </a>
                                 </li>

@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LitigeController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\JugementController;  // هنا نضيف JugementController مرة وحدة
 
 // صفحة login
 Route::get('/', function () {
@@ -26,6 +25,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.su
 // Dashboard (باستعمال controller فقط)
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/litiges/fetch-by-name/{name}', [LitigeController::class, 'fetchByName']);
 // Profil (باستعمال controller)
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 Route::get('/profile/change-password', [ProfileController::class, 'showChangePassword'])->name('profile.change-password');
@@ -47,12 +47,48 @@ Route::get('/litiges/{id}/edit', [LitigeController::class, 'edit'])->name('litig
 Route::put('/litiges/{id}', [LitigeController::class, 'update'])->name('litiges.update');
 Route::delete('/litiges/{id}', [LitigeController::class, 'destroy'])->name('litiges.destroy');
 Route::get('/litiges/export', [LitigeController::class, 'export'])->name('litiges.export');
+Route::get('/litiges/fetch-by-rental-number/{rentalNumber}', [LitigeController::class, 'fetchByRentalNumber'])->name('litiges.fetch-by-rental-number');
+Route::post('/litiges/fetch-by-name', [LitigeController::class, 'fetchByName'])->name('litiges.fetch-by-name');
 
-// Jugements
-Route::get('/jugements', [JugementController::class, 'index'])->name('jugements.index');
-Route::get('/jugements/create', [JugementController::class, 'create'])->name('jugements.create');
-Route::post('/jugements', [JugementController::class, 'store'])->name('jugements.store');
-Route::get('/jugements/{id}/edit', [JugementController::class, 'edit'])->name('jugements.edit');
-Route::put('/jugements/{id}', [JugementController::class, 'update'])->name('jugements.update');
-Route::delete('/jugements/{id}', [JugementController::class, 'destroy'])->name('jugements.destroy');
-Route::get('/jugements/export', [JugementController::class, 'export'])->name('jugements.export');
+
+// Auto-fill data endpoint - fetches real employee data from database
+Route::get('/load-data/{rentalNumber}', function($rentalNumber) {
+    $litige = \Illuminate\Support\Facades\DB::table('jugement')
+        ->where('رقم تأجير', $rentalNumber)
+        ->orderBy('id', 'desc')
+        ->first();
+    
+    if ($litige) {
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'الاسم_و_النسب' => $litige->{'الاسم و النسب'} ?? '',
+                'الإطار' => $litige->{'الإطار'} ?? '',
+                'المديرية_الإقليمية' => $litige->{'المديرية الإقليمية'} ?? '',
+                'الاكاديمية' => $litige->{'الاكاديمية'} ?? '',
+                'ملاحظات' => $litige->{'ملاحظات'} ?? ''
+            ]
+        ]);
+    }
+    
+    return response()->json([
+        'success' => false,
+        'message' => 'No data found for this rental number'
+    ]);
+});
+
+// Jugement routes
+use App\Http\Controllers\JugementController;
+Route::get('/jugement', [JugementController::class, 'index'])->name('jugement.index');
+Route::get('/jugement/create', [JugementController::class, 'create'])->name('jugement.create');
+Route::post('/jugement', [JugementController::class, 'store'])->name('jugement.store');
+Route::get('/jugement/{id}/edit', [JugementController::class, 'edit'])->name('jugement.edit');
+Route::put('/jugement/{id}', [JugementController::class, 'update'])->name('jugement.update');
+Route::delete('/jugement/{id}', [JugementController::class, 'destroy'])->name('jugement.destroy');
+
+
+Route::get('/get-data/{rentalId}', [LitigeController::class, 'getByRental']);
+
+Route::get('/reports', function () {
+    return view('reports');
+})->name('reports');

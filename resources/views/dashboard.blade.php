@@ -3,80 +3,243 @@
 @section('title', 'Tableau de Bord')
 
 @section('content')
-<div class="container-fluid">
-    <!-- Welcome Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="card-modern text-center">
-                <h1 class="display-4 mb-3">
-                    <i class="fas fa-gavel text-primary me-2"></i>
-                    Bienvenue dans le Système de Gestion des Litiges RH
-                </h1>
-                <p class="lead text-muted">
-                    Ministère de l'Éducation Nationale - Royaume du Maroc
-                </p>
-            </div>
-        </div>
+<!-- Welcome Header -->
+<div class="welcome-header">
+    <div class="welcome-text">
+        <h1>Tableau de Bord</h1>
+        <p class="lead">Bienvenue, <strong>{{ auth()->user()->name ?? 'Administrateur' }}</strong>. Gestion des litiges RH en temps réel.</p>
     </div>
+    <div class="date-display">
+        <div class="current-date">{{ now()->format('l, d F Y') }}</div>
+        <div class="current-time">{{ now()->format('H:i') }}</div>
+    </div>
+</div>
 
-    <!-- Slider Section -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <div class="slider shadow-hover">
-                <div class="slides">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" alt="Éducation Nationale">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Formation">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Ressources Humaines">
+<div class="dashboard-grid">
+    <!-- ========== RIGHT SIDEBAR - QUICK ACTIONS ========== -->
+    <aside class="sidebar-left">
+        <div class="sidebar-content">
+            <div class="sidebar-section">
+                <h4 class="sidebar-title">
+                    <i class="fas fa-bolt"></i>
+                    🚀 Actions Rapides
+                </h4>
+                <div class="quick-actions">
+                    <a href="{{ route('litiges.create') }}?type=منازعة" class="action-btn">
+                        <i class="fas fa-file-contract"></i>
+                        Nouveau Litige
+                    </a>
+                    <a href="{{ route('litiges.create') }}?type=التظلم" class="action-btn">
+                        <i class="fas fa-comment-medical"></i>
+                        Nouveau Témoignage
+                    </a>
+                    <a href="{{ route('litiges.create') }}?type=حكم قضائي" class="action-btn">
+                        <i class="fas fa-balance-scale"></i>
+                        Nouveau Jugement
+                    </a>
+                    <a href="{{ route('litiges.index') }}" class="action-btn">
+                        <i class="fas fa-search"></i>
+                        Rechercher Dossier
+                    </a>
+                    <a href="{{ route('profile') }}" class="action-btn">
+                        <i class="fas fa-user-cog"></i>
+                        Mon Profil
+                    </a>
+                    <a href="{{ route('support') }}" class="action-btn">
+                        <i class="fas fa-headset"></i>
+                        Support
+                    </a>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h4 class="sidebar-title">
+                    <i class="fas fa-filter"></i>
+                    🔍 Filtres Rapides
+                </h4>
+                <div class="quick-actions">
+                    <a href="{{ route('litiges.index') }}?status=urgent" class="action-btn">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Dossiers Urgents
+                    </a>
+                    <a href="{{ route('litiges.index') }}?status=en_cours" class="action-btn">
+                        <i class="fas fa-clock"></i>
+                        En Cours
+                    </a>
+                    <a href="{{ route('litiges.index') }}?status=resolu" class="action-btn">
+                        <i class="fas fa-check-circle"></i>
+                        Résolus
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
+    </aside>
 
-    <!-- Presentation Text -->
-    <div class="row">
-        <div class="col-12">
-            <div class="presentation">
-                <h2 class="text-center mb-4">
-                    <i class="fas fa-info-circle me-2"></i>
-                    À propos du Département des Ressources Humaines
-                </h2>
-                <p>
-                    Le Département des Ressources Humaines et Formation des Cadres constitue l'un des piliers essentiels au bon fonctionnement et à la réussite stratégique de toute organisation moderne. En effet, ce département ne se limite pas à la simple gestion administrative du personnel, mais s'engage profondément dans l'optimisation du capital humain, considéré aujourd'hui comme l'actif le plus précieux et déterminant pour la compétitivité de l'entreprise. La gestion des ressources humaines englobe un large éventail de responsabilités, allant du recrutement rigoureux des talents les plus adaptés, à la planification stratégique des carrières, en passant par la mise en œuvre de politiques de développement professionnel et personnel. La formation des cadres représente un axe majeur de cette stratégie globale, visant à doter les managers et futurs leaders des compétences managériales, techniques et comportementales indispensables pour relever les défis organisationnels, accompagner les changements, et promouvoir une culture d'excellence et d'innovation. Dans ce contexte, le Service des Litiges RH joue un rôle fondamental en assurant une gestion juste, transparente et efficace des conflits internes pouvant surgir entre les employés et la direction. Ce service agit en médiateur impartial, facilitant le dialogue et la résolution rapide des différends, afin de préserver un climat social sain, la motivation des collaborateurs, et la continuité des activités. La complexité et la sensibilité de ces dossiers requièrent un suivi rigoureux et structuré, que cette application web est spécialement conçue pour faciliter. En centralisant toutes les données relatives aux litiges, cette plateforme offre une visibilité en temps réel sur l'état d'avancement des dossiers, permet la génération de rapports détaillés et personnalisés, et améliore la prise de décision par les responsables RH. De plus, elle favorise une communication fluide entre les différentes parties prenantes, garantissant ainsi la traçabilité des interventions et la transparence des procédures. Par ailleurs, cette solution technologique contribue également à la conformité réglementaire, en assurant une documentation exhaustive et un archivage sécurisé, répondant aux exigences légales en matière de droit du travail et de gestion des conflits. Ainsi, le département des Ressources Humaines et Formation des Cadres, grâce à cette application innovante, peut pleinement assumer son rôle stratégique, conciliant performance économique, bien-être social et responsabilité éthique, pour accompagner durablement le développement harmonieux de l'organisation.
-                </p>
+    <!-- ========== MAIN CONTENT AREA (LEFT SIDE) ========== -->
+    <main class="main-content-area">
+
+        <!-- Search Bar -->
+        <div class="search-section">
+            <form action="{{ route('litiges.index') }}" method="GET" class="search-form">
+                <div class="search-input-group">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text"
+                           name="search"
+                           class="search-input"
+                           placeholder="Rechercher par: nom, numéro de dossier, type, statut..."
+                           value="{{ request('search') }}">
+                    <button type="submit" class="search-btn">
+                        <i class="fas fa-search"></i>
+                        Rechercher
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ $totalLitiges }}</div>
+                    <div class="stat-label">Total Litiges</div>
+                    <div class="stat-trend positive">
+                        <i class="fas fa-arrow-up"></i> En temps réel
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ $enCours }}</div>
+                    <div class="stat-label">En Cours</div>
+                    <div class="stat-trend warning">
+                        <i class="fas fa-arrow-right"></i> Non exécutés
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ $resolus }}</div>
+                    <div class="stat-label">Résolus</div>
+                    <div class="stat-trend positive">
+                        <i class="fas fa-arrow-up"></i> Exécutés
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ $enRetard }}</div>
+                    <div class="stat-label">En Retard</div>
+                    <div class="stat-trend negative">
+                        <i class="fas fa-arrow-down"></i> Date dépassée
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Quick Actions -->
-    <div class="row mt-4">
-        <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('litiges.index') }}" class="card-modern text-decoration-none text-center h-100 d-block">
-                <i class="fas fa-gavel fa-3x text-primary mb-3"></i>
-                <h5>Gestion des Litiges</h5>
-                <p class="text-muted small">Consulter et gérer les litiges</p>
-            </a>
+
+        <!-- Recent Litiges Table -->
+        <div class="content-card">
+            <div class="card-header">
+                <h3>
+                    <i class="fas fa-history me-2"></i>
+                    Litiges Récents
+                </h3>
+                <a href="{{ route('litiges.index') }}" class="view-all-link">
+                    Voir tous
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>N° Dossier</th>
+                            <th>Nom & Prénom</th>
+                            <th>Type</th>
+                            <th>Statut</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($recentLitiges as $litige)
+                        <tr>
+                            <td class="fw-bold">#{{ $litige->{'رقم تأجير'} ?? 'N/A' }}</td>
+                            <td>{{ $litige->{'الاسم و النسب'} ?? 'N/A' }}</td>
+                            <td>
+                                <span class="badge badge-{{ 
+                                    $litige->{'نوع السجل'} == 'منازعة' ? 'primary' : 
+                                    ($litige->{'نوع السجل'} == 'التظلم' ? 'warning' : 'info') 
+                                }}">
+                                    {{ $litige->{'نوع السجل'} ?? 'N/A' }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge badge-{{ $litige->{'منفذة أو غير منفذة'} ? 'success' : 'warning' }}">
+                                    {{ $litige->{'منفذة أو غير منفذة'} ? 'Résolu' : 'En cours' }}
+                                </span>
+                            </td>
+                            <td>{{ $litige->{'تاريخ التسوية'} ? \Carbon\Carbon::parse($litige->{'تاريخ التسوية'})->format('d/m/Y') : 'N/A' }}</td>
+                            <td>
+                                <a href="{{ route('litiges.edit', $litige->id) }}" class="btn-icon" title="Éditer">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="6" class="text-center py-4">
+                                <i class="fas fa-inbox fa-2x text-muted mb-2"></i>
+                                <p class="text-muted">Aucun litige trouvé</p>
+                            </td>
+                        </tr>
+                        @endforelse
+                    </tbody>
+
+                </table>
+            </div>
         </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('profile') }}" class="card-modern text-decoration-none text-center h-100 d-block">
-                <i class="fas fa-user fa-3x text-info mb-3"></i>
-                <h5>Mon Profil</h5>
-                <p class="text-muted small">Gérer vos informations</p>
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('support') }}" class="card-modern text-decoration-none text-center h-100 d-block">
-                <i class="fas fa-headset fa-3x text-success mb-3"></i>
-                <h5>Support</h5>
-                <p class="text-muted small">Obtenir de l'aide</p>
-            </a>
-        </div>
-        <div class="col-md-3 col-sm-6 mb-3">
-            <a href="{{ route('jugements.create') }}" class="card-modern text-decoration-none text-center h-100 d-block">
-                <i class="fas fa-plus-circle fa-3x text-danger mb-3"></i>
-                <h5>Nouveau Dossier</h5>
-                <p class="text-muted small">Créer un nouveau litige</p>
-            </a>
-        </div>
-    </div>
+    </main>
 </div>
+
+
+
+
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Update current time every minute
+    function updateTime() {
+        const now = new Date();
+        const timeElement = document.querySelector('.current-time');
+        if (timeElement) {
+            timeElement.textContent = now.toLocaleTimeString('fr-FR', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+    }
+
+    updateTime();
+    setInterval(updateTime, 60000);
+});
+</script>
+@endpush
+
 @endsection
