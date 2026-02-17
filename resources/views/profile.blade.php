@@ -274,13 +274,14 @@
 
 /* Profile Header */
 .profile-header {
-    background: linear-gradient(135deg, #0F2A4A 0%, #1a3a5a 50%, #2C3E50 100%);
+    background: linear-gradient(135deg, #4A5568 0%, #5A6578 50%, #4A5568 100%);
     border-radius: 24px;
     padding: 40px;
     margin-bottom: 30px;
     color: white;
-    box-shadow: 0 10px 40px rgba(15, 42, 74, 0.3);
+    box-shadow: 0 10px 40px rgba(74, 85, 104, 0.3);
 }
+
 
 .profile-header-content {
     display: flex;
@@ -301,10 +302,11 @@
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: #0F2A4A;
+    color: #4A5568;
     position: relative;
     box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
+
 
 .status-badge {
     position: absolute;
