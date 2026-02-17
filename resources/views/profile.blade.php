@@ -274,8 +274,9 @@
 
 /* Profile Header */
 .profile-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0F2A4A 0%, #1a3a5a 50%, #2C3E50 100%);
     border-radius: 24px;
+
     padding: 40px;
     margin-bottom: 30px;
     color: white;
@@ -301,7 +302,8 @@
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    color: #667eea;
+    color: #0F2A4A;
+
     position: relative;
     box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
@@ -399,10 +401,11 @@
     flex-shrink: 0;
 }
 
-.stat-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.stat-icon.blue { background: linear-gradient(135deg, #0F2A4A, #1a3a5a); }
 .stat-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
 .stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.stat-icon.purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.stat-icon.purple { background: linear-gradient(135deg, #2C3E50, #1a3a5a); }
+
 
 .stat-info {
     flex: 1;
@@ -433,14 +436,15 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: linear-gradient(90deg, #0F2A4A, #2C3E50);
     border-radius: 3px;
     transition: width 0.5s ease;
 }
 
 .progress-fill.green { background: linear-gradient(90deg, #10b981, #059669); }
 .progress-fill.orange { background: linear-gradient(90deg, #f59e0b, #d97706); }
-.progress-fill.purple { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+.progress-fill.purple { background: linear-gradient(90deg, #2C3E50, #0F2A4A); }
+
 
 /* Main Grid */
 .profile-content-grid {
@@ -475,8 +479,9 @@
 }
 
 .info-card h3 i {
-    color: #667eea;
+    color: #D4AF37;
 }
+
 
 /* Card Header */
 .card-header {
@@ -491,14 +496,15 @@
 .header-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: #D4AF37;
     font-size: 1.3rem;
 }
+
 
 .header-icon.green {
     background: linear-gradient(135deg, #10b981, #059669);
@@ -545,7 +551,8 @@
     flex-shrink: 0;
 }
 
-.contact-icon.email { background: linear-gradient(135deg, #667eea, #764ba2); }
+.contact-icon.email { background: linear-gradient(135deg, #0F2A4A, #2C3E50); }
+
 .contact-icon.phone { background: linear-gradient(135deg, #10b981, #059669); }
 .contact-icon.location { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
@@ -588,11 +595,12 @@
 }
 
 .quick-action:hover {
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
     color: white;
     transform: translateX(-8px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 25px rgba(15, 42, 74, 0.3);
 }
+
 
 .action-icon {
     width: 40px;
@@ -602,10 +610,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #667eea;
+    color: #0F2A4A;
     font-size: 1.1rem;
     transition: all 0.3s ease;
 }
+
 
 .quick-action:hover .action-icon {
     background: rgba(255,255,255,0.2);
@@ -682,21 +691,22 @@
 .row-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    background: linear-gradient(135deg, rgba(15, 42, 74, 0.1), rgba(44, 62, 80, 0.1));
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #667eea;
+    color: #0F2A4A;
     font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
 .info-row:hover .row-icon {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    color: white;
+    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
+    color: #D4AF37;
     transform: scale(1.1) rotate(5deg);
 }
+
 
 .row-content {
     flex: 1;
@@ -718,11 +728,12 @@
 }
 
 .row-content span.highlight {
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: linear-gradient(90deg, #0F2A4A, #2C3E50);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
+
 
 /* Security List */
 .security-list {
