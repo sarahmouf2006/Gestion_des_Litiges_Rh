@@ -4,139 +4,164 @@
 
 @section('content')
 <div class="profile-container">
-    <!-- Profile Hero Section -->
-    <div class="profile-hero">
-        <div class="profile-hero-content">
-            <div class="profile-avatar-large">
+    <!-- Profile Header -->
+    <div class="profile-header">
+        <div class="profile-header-content">
+            <div class="avatar-section">
                 <div class="avatar-circle">
                     <i class="fas fa-user"></i>
+                    <div class="status-badge online"></div>
                 </div>
-                <div class="avatar-status online"></div>
             </div>
+            
             <div class="profile-info">
                 <h1>{{ $user->nom ?? 'Utilisateur' }}</h1>
-                <p class="profile-role">{{ $grade }} • {{ $direction }}</p>
+                <p class="profile-subtitle">{{ $grade }} • {{ $direction }}</p>
+                
                 <div class="profile-meta">
-                    <span><i class="fas fa-id-card"></i> {{ $matricule }}</span>
-                    <span><i class="fas fa-clock"></i> Dernière connexion: {{ $lastLogin }}</span>
+                    <span class="meta-tag">
+                        <i class="fas fa-id-card"></i>
+                        {{ $matricule }}
+                    </span>
+                    <span class="meta-tag">
+                        <i class="fas fa-clock"></i>
+                        Dernière connexion: {{ $lastLogin }}
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Stats Grid - Add this section -->
-<div class="stats-grid-modern">
-    <div class="stat-card-modern">
-        <div class="stat-icon blue">
-            <i class="fas fa-calendar-check"></i>
-        </div>
-        <div class="stat-content">
-            <span class="stat-label">Présences ce mois</span>
-            <span class="stat-value">18</span>
-            <span class="stat-trend positive">
-                <i class="fas fa-arrow-up"></i> +12%
-            </span>
-        </div>
-    </div>
-    
-    <div class="stat-card-modern">
-        <div class="stat-icon green">
-            <i class="fas fa-file-alt"></i>
-        </div>
-        <div class="stat-content">
-            <span class="stat-label">Documents</span>
-            <span class="stat-value">24</span>
-            <span class="stat-trend neutral">
-                <i class="fas fa-minus"></i> stable
-            </span>
-        </div>
-    </div>
-    
-    <div class="stat-card-modern">
-        <div class="stat-icon orange">
-            <i class="fas fa-clock"></i>
-        </div>
-        <div class="stat-content">
-            <span class="stat-label">Congés restants</span>
-            <span class="stat-value">15</span>
-            <span class="stat-trend warning">
-                <i class="fas fa-exclamation-triangle"></i> 5 jours
-            </span>
-        </div>
-    </div>
-    
-    <div class="stat-card-modern">
-        <div class="stat-icon purple">
-            <i class="fas fa-tasks"></i>
-        </div>
-        <div class="stat-content">
-            <span class="stat-label">Tâches en cours</span>
-            <span class="stat-value">5</span>
-            <span class="stat-trend">
-                <i class="fas fa-clock"></i> 3 urgentes
-            </span>
-        </div>
-    </div>
-</div>
 
-    <div class="profile-grid">
-        <!-- Left Column -->
-        <div class="profile-sidebar">
-            <!-- Contact Card -->
-            <div class="profile-card">
-                <div class="card-icon blue">
-                    <i class="fas fa-address-card"></i>
+    <!-- Stats Cards -->
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-icon blue">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">18</span>
+                <span class="stat-label">Présences ce mois</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%"></div>
                 </div>
-                <h3>Contact</h3>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon green">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">24</span>
+                <span class="stat-label">Documents</span>
+                <div class="progress-bar">
+                    <div class="progress-fill green" style="width: 60%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon orange">
+                <i class="fas fa-umbrella-beach"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">15</span>
+                <span class="stat-label">Congés restants</span>
+                <div class="progress-bar">
+                    <div class="progress-fill orange" style="width: 40%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon purple">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="stat-info">
+                <span class="stat-value">5</span>
+                <span class="stat-label">Tâches en cours</span>
+                <div class="progress-bar">
+                    <div class="progress-fill purple" style="width: 75%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="profile-content-grid">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <!-- Contact Card -->
+            <div class="info-card">
+                <h3><i class="fas fa-address-card"></i> Contact</h3>
+                
                 <div class="contact-list">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <label>Email</label>
-                            <span>{{ $user->email ?? 'Non défini' }}</span>
+                    <div class="contact-row">
+                        <div class="contact-icon email">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <small>Email</small>
+                            <span>{{ $user->email ?? 'Non renseigné' }}</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <label>Téléphone</label>
-                            <span>{{ $telephone_bureau ?: 'Non défini' }}</span>
+                    
+                    <div class="contact-row">
+                        <div class="contact-icon phone">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <small>Téléphone</small>
+                            <span>{{ $telephone_bureau ?? 'Non renseigné' }}</span>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <label>Bureau</label>
-                            <span>{{ $bureau ?: 'Non défini' }}</span>
+                    
+                    <div class="contact-row">
+                        <div class="contact-icon location">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <small>Bureau</small>
+                            <span>{{ $bureau ?? 'Non renseigné' }}</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Quick Actions -->
-            <div class="profile-card actions">
-                <h3>Actions Rapides</h3>
-                <a href="{{ route('profile.change-password') }}" class="action-link">
-                    <i class="fas fa-key"></i>
+            <div class="info-card">
+                <h3><i class="fas fa-bolt"></i> Actions Rapides</h3>
+                
+                <a href="{{ route('profile.change-password') }}" class="quick-action">
+                    <div class="action-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
                     <span>Modifier mot de passe</span>
                     <i class="fas fa-chevron-left"></i>
                 </a>
-                <a href="{{ route('profile.two-factor') }}" class="action-link">
-                    <i class="fas fa-shield-alt"></i>
+                
+                <a href="{{ route('profile.two-factor') }}" class="quick-action">
+                    <div class="action-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <span>Double authentification</span>
                     <i class="fas fa-chevron-left"></i>
                 </a>
-                <a href="{{ route('profile.connection-history') }}" class="action-link">
-                    <i class="fas fa-history"></i>
+                
+                <a href="{{ route('profile.connection-history') }}" class="quick-action">
+                    <div class="action-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
                     <span>Historique de connexion</span>
                     <i class="fas fa-chevron-left"></i>
                 </a>
             </div>
         </div>
 
-        <!-- Right Column -->
-        <div class="profile-main">
+        <!-- Right Content -->
+        <div class="main-content">
             <!-- Professional Info -->
-            <div class="profile-card main-card">
+            <div class="info-card">
                 <div class="card-header">
                     <div class="header-icon">
                         <i class="fas fa-user-tie"></i>
@@ -144,43 +169,43 @@
                     <h2>Informations Professionnelles</h2>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-item">
-                        <div class="info-icon">
+                <div class="info-list">
+                    <div class="info-row">
+                        <div class="row-icon">
                             <i class="fas fa-user"></i>
                         </div>
-                        <div class="info-content">
-                            <label>Nom complet</label>
+                        <div class="row-content">
+                            <small>Nom complet</small>
                             <span>{{ $user->nom ?? 'À compléter' }}</span>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="info-row">
+                        <div class="row-icon">
                             <i class="fas fa-id-badge"></i>
                         </div>
-                        <div class="info-content">
-                            <label>Matricule RH</label>
-                            <span>{{ $matricule }}</span>
+                        <div class="row-content">
+                            <small>Matricule RH</small>
+                            <span class="highlight">{{ $matricule }}</span>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="info-row">
+                        <div class="row-icon">
                             <i class="fas fa-star"></i>
                         </div>
-                        <div class="info-content">
-                            <label>Grade</label>
+                        <div class="row-content">
+                            <small>Grade</small>
                             <span>{{ $grade }}</span>
                         </div>
                     </div>
                     
-                    <div class="info-item">
-                        <div class="info-icon">
+                    <div class="info-row">
+                        <div class="row-icon">
                             <i class="fas fa-building"></i>
                         </div>
-                        <div class="info-content">
-                            <label>Direction</label>
+                        <div class="row-content">
+                            <small>Direction</small>
                             <span>{{ $direction }}</span>
                         </div>
                     </div>
@@ -188,7 +213,7 @@
             </div>
 
             <!-- Security Status -->
-            <div class="profile-card main-card">
+            <div class="info-card">
                 <div class="card-header">
                     <div class="header-icon green">
                         <i class="fas fa-lock"></i>
@@ -196,20 +221,27 @@
                     <h2>Sécurité du Compte</h2>
                 </div>
                 
-                <div class="security-status">
-                    <div class="status-item success">
-                        <i class="fas fa-check-circle"></i>
-                        <div>
-                            <span class="status-title">Mot de passe</span>
-                            <span class="status-desc">À jour • Modifié il y a 30 jours</span>
+                <div class="security-list">
+                    <div class="security-row secure">
+                        <div class="security-icon">
+                            <i class="fas fa-check-circle"></i>
                         </div>
+                        <div class="security-content">
+                            <span>Mot de passe</span>
+                            <small>À jour • Modifié il y a 30 jours</small>
+                        </div>
+                        <span class="status-badge secure">Sécurisé</span>
                     </div>
-                    <div class="status-item warning">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <div>
-                            <span class="status-title">Double authentification</span>
-                            <span class="status-desc">Non activée • Recommandée</span>
+                    
+                    <div class="security-row warning">
+                        <div class="security-icon">
+                            <i class="fas fa-exclamation-circle"></i>
                         </div>
+                        <div class="security-content">
+                            <span>Double authentification</span>
+                            <small>Non activée • Recommandée</small>
+                        </div>
+                        <span class="status-badge warning">Activer</span>
                     </div>
                 </div>
             </div>
@@ -218,609 +250,128 @@
 </div>
 
 <style>
-/* Modern Profile Page Styles */
+/* ===== CLEAN MODERN PROFILE STYLES ===== */
+
 .profile-container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 30px;
-    animation: fadeIn 0.5s ease-out;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Hero Section - Modern Glassmorphism */
-.profile-hero {
-    background: linear-gradient(135deg, #0F2A4A 0%, #1a3a5a 50%, #0d2137 100%);
+/* Profile Header */
+.profile-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 24px;
-    padding: 50px;
-    margin-bottom: 40px;
+    padding: 40px;
+    margin-bottom: 30px;
     color: white;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(15, 42, 74, 0.3);
+    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
 }
 
-.profile-hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(100, 181, 246, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    animation: pulse 4s ease-in-out infinite;
-}
-
-.profile-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -30%;
-    left: -5%;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-}
-
-
-.profile-hero-content {
+.profile-header-content {
     display: flex;
     align-items: center;
-    gap: 35px;
-    position: relative;
-    z-index: 1;
+    gap: 30px;
 }
 
-.profile-avatar-large {
-    position: relative;
-    transition: transform 0.3s ease;
-}
-
-.profile-avatar-large:hover {
-    transform: scale(1.05);
+.avatar-section {
+    flex-shrink: 0;
 }
 
 .avatar-circle {
     width: 120px;
     height: 120px;
-    background: rgba(255,255,255,0.1);
+    background: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 3rem;
-    border: 4px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    color: #667eea;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
-.avatar-circle:hover {
-    background: rgba(255,255,255,0.2);
-    border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-}
-
-.avatar-status {
+.status-badge {
     position: absolute;
-    bottom: 8px;
-    right: 8px;
+    bottom: 5px;
+    right: 5px;
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 3px solid #0F2A4A;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 3px solid white;
 }
 
-.avatar-status.online {
-    background: linear-gradient(135deg, #4CAF50, #45a049);
-    animation: pulseStatus 2s ease-in-out infinite;
+.status-badge.online {
+    background: #10b981;
+    animation: pulse 2s infinite;
 }
 
-@keyframes pulseStatus {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
 }
-
 
 .profile-info h1 {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 10px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.profile-role {
+.profile-subtitle {
     font-size: 1.2rem;
-    opacity: 0.95;
+    opacity: 0.9;
     margin-bottom: 20px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.profile-role::before {
-    content: '';
-    width: 8px;
-    height: 8px;
-    background: #D4AF37;
-    border-radius: 50%;
-    display: inline-block;
 }
 
 .profile-meta {
     display: flex;
-    gap: 30px;
+    gap: 15px;
     flex-wrap: wrap;
 }
 
-.profile-meta span {
+.meta-tag {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    background: rgba(255,255,255,0.2);
+    padding: 10px 18px;
+    border-radius: 50px;
     font-size: 0.95rem;
-    opacity: 0.9;
-    background: rgba(255,255,255,0.1);
-    padding: 8px 16px;
-    border-radius: 20px;
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
 }
 
-.profile-meta span:hover {
-    background: rgba(255,255,255,0.2);
+.meta-tag:hover {
+    background: rgba(255,255,255,0.3);
     transform: translateY(-2px);
 }
 
-
-/* Grid Layout */
-.profile-grid {
-    display: grid;
-    grid-template-columns: 380px 1fr;
-    gap: 30px;
-}
-
-/* Cards - Modern Design */
-.profile-card {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid rgba(233, 236, 239, 0.5);
-    margin-bottom: 25px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.profile-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #0F2A4A, #64B5F6);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-}
-
-.profile-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
-}
-
-.profile-card:hover::before {
-    transform: scaleX(1);
-}
-
-.profile-card h3 {
-    font-size: 1.2rem;
-    color: #0F2A4A;
-    margin-bottom: 25px;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
-.card-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-}
-
-.card-icon.blue {
-    background: linear-gradient(135deg, rgba(100, 181, 246, 0.2), rgba(100, 181, 246, 0.1));
-    color: #64B5F6;
-    box-shadow: 0 4px 15px rgba(100, 181, 246, 0.3);
-}
-
-.profile-card:hover .card-icon.blue {
-    transform: scale(1.1) rotate(5deg);
-}
-
-
-/* Contact List - Modern */
-.contact-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    background: #F8F9FA;
-}
-
-.contact-item:hover {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transform: translateX(-5px);
-}
-
-.contact-item > i {
-    width: 44px;
-    height: 44px;
-    background: linear-gradient(135deg, #0F2A4A, #1a3a5a);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1rem;
-    flex-shrink: 0;
-    box-shadow: 0 4px 10px rgba(15, 42, 74, 0.3);
-    transition: all 0.3s ease;
-}
-
-.contact-item:hover > i {
-    transform: scale(1.1);
-    box-shadow: 0 6px 15px rgba(15, 42, 74, 0.4);
-}
-
-.contact-item div {
-    flex: 1;
-}
-
-.contact-item label {
-    display: block;
-    font-size: 0.8rem;
-    color: #6C757D;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 5px;
-    font-weight: 600;
-}
-
-.contact-item span {
-    font-size: 1rem;
-    color: #0F2A4A;
-    font-weight: 600;
-}
-
-
-/* Action Links - Modern */
-.profile-card.actions {
-    padding: 25px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-}
-
-.action-link {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 18px 20px;
-    border-radius: 14px;
-    color: #2C3E50;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    margin-bottom: 12px;
-    background: white;
-    border: 1px solid #E9ECEF;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-}
-
-.action-link:last-child {
-    margin-bottom: 0;
-}
-
-.action-link:hover {
-    background: #0F2A4A;
-    color: white;
-    transform: translateX(-8px);
-    box-shadow: 0 8px 25px rgba(15, 42, 74, 0.25);
-    border-color: #0F2A4A;
-}
-
-.action-link i:first-child {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, rgba(100, 181, 246, 0.15), rgba(100, 181, 246, 0.05));
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #64B5F6;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.action-link:hover i:first-child {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    transform: scale(1.1);
-}
-
-.action-link span {
-    flex: 1;
-    font-size: 1rem;
-    font-weight: 600;
-}
-
-.action-link .fa-chevron-left {
-    color: #ADB5BD;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.action-link:hover .fa-chevron-left {
-    color: white;
-    transform: translateX(-5px);
-}
-
-
-/* Main Cards - Enhanced */
-.profile-card.main-card {
-    padding: 0;
-    overflow: hidden;
-    border-radius: 20px;
-}
-
-.card-header {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 25px 30px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-bottom: 1px solid #E9ECEF;
-}
-
-.header-icon {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #0F2A4A, #1a3a5a);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 15px rgba(15, 42, 74, 0.3);
-    transition: all 0.3s ease;
-}
-
-.profile-card:hover .header-icon {
-    transform: rotate(10deg) scale(1.1);
-}
-
-.header-icon.green {
-    background: linear-gradient(135deg, #28a745, #218838);
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
-}
-
-.card-header h2 {
-    font-size: 1.3rem;
-    color: #0F2A4A;
-    font-weight: 700;
-    margin: 0;
-}
-
-
-/* Info Grid - Modern */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 30px;
-    border-bottom: 1px solid #E9ECEF;
-    transition: all 0.3s ease;
-}
-
-.info-item:hover {
-    background: #F8F9FA;
-}
-
-.info-item:nth-last-child(-n+2) {
-    border-bottom: none;
-}
-
-.info-item:nth-child(odd) {
-    border-left: 1px solid #E9ECEF;
-}
-
-.info-icon {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, rgba(100, 181, 246, 0.15), rgba(100, 181, 246, 0.05));
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #64B5F6;
-    font-size: 1.4rem;
-    transition: all 0.3s ease;
-}
-
-.info-item:hover .info-icon {
-    transform: scale(1.1) rotate(5deg);
-    background: linear-gradient(135deg, rgba(100, 181, 246, 0.25), rgba(100, 181, 246, 0.1));
-}
-
-.info-content {
-    flex: 1;
-}
-
-.info-content label {
-    display: block;
-    font-size: 0.85rem;
-    color: #6C757D;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 6px;
-    font-weight: 600;
-}
-
-.info-content span {
-    font-size: 1.15rem;
-    color: #0F2A4A;
-    font-weight: 700;
-}
-
-
-/* Security Status - Enhanced */
-.security-status {
-    padding: 30px;
-}
-
-.status-item {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 22px;
-    border-radius: 16px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
-}
-
-.status-item:hover {
-    transform: translateX(5px);
-}
-
-.status-item:last-child {
-    margin-bottom: 0;
-}
-
-.status-item.success {
-    background: linear-gradient(135deg, rgba(40, 167, 69, 0.1), rgba(40, 167, 69, 0.05));
-    border-color: rgba(40, 167, 69, 0.2);
-}
-
-.status-item.success i {
-    color: #28a745;
-    font-size: 1.8rem;
-    filter: drop-shadow(0 2px 4px rgba(40, 167, 69, 0.3));
-}
-
-.status-item.warning {
-    background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 193, 7, 0.05));
-    border-color: rgba(255, 193, 7, 0.2);
-}
-
-.status-item.warning i {
-    color: #ffc107;
-    font-size: 1.8rem;
-    filter: drop-shadow(0 2px 4px rgba(255, 193, 7, 0.3));
-    animation: pulseWarning 2s ease-in-out infinite;
-}
-
-@keyframes pulseWarning {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-.status-item div {
-    flex: 1;
-}
-
-.status-title {
-    display: block;
-    font-weight: 700;
-    color: #0F2A4A;
-    margin-bottom: 5px;
-    font-size: 1.05rem;
-}
-
-.status-desc {
-    font-size: 0.95rem;
-    color: #6C757D;
-    font-weight: 500;
-}
-
-
-/* Enhanced Stats Grid for Profile */
-.stats-grid-modern {
+/* Stats Row */
+.stats-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
-    margin: 30px 0;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-.stat-card-modern {
+.stat-card {
     background: white;
     border-radius: 20px;
     padding: 25px;
     display: flex;
     align-items: center;
-    gap: 18px;
-    border: 1px solid #E9ECEF;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-    position: relative;
-    overflow: hidden;
+    gap: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
 }
 
-.stat-card-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(180deg, #64B5F6, #0F2A4A);
-    transform: scaleY(0);
-    transform-origin: top;
-    transition: transform 0.3s ease;
-}
-
-.stat-card-modern:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-}
-
-.stat-card-modern:hover::before {
-    transform: scaleY(1);
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
 }
 
 .stat-icon {
@@ -831,93 +382,426 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    transition: all 0.3s ease;
+    color: white;
+    flex-shrink: 0;
 }
 
-.stat-icon.blue {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    color: #1976d2;
-    box-shadow: 0 4px 15px rgba(25, 118, 210, 0.2);
-}
+.stat-icon.blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.stat-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
+.stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+.stat-icon.purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
-.stat-icon.green {
-    background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
-    color: #388e3c;
-    box-shadow: 0 4px 15px rgba(56, 142, 60, 0.2);
-}
-
-.stat-icon.orange {
-    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
-    color: #f57c00;
-    box-shadow: 0 4px 15px rgba(245, 124, 0, 0.2);
-}
-
-.stat-icon.purple {
-    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
-    color: #7b1fa2;
-    box-shadow: 0 4px 15px rgba(123, 31, 162, 0.2);
-}
-
-.stat-card-modern:hover .stat-icon {
-    transform: scale(1.15) rotate(10deg);
-}
-
-.stat-content {
+.stat-info {
     flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1;
+    margin-bottom: 5px;
 }
 
 .stat-label {
     display: block;
-    font-size: 0.85rem;
-    color: #6C757D;
-    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.progress-fill.green { background: linear-gradient(90deg, #10b981, #059669); }
+.progress-fill.orange { background: linear-gradient(90deg, #f59e0b, #d97706); }
+.progress-fill.purple { background: linear-gradient(90deg, #8b5cf6, #7c3aed); }
+
+/* Main Grid */
+.profile-content-grid {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 25px;
+}
+
+/* Cards */
+.info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e5e7eb;
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    color: #1f2937;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.info-card h3 i {
+    color: #667eea;
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.header-icon.green {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.card-header h2 {
+    font-size: 1.3rem;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* Contact List */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: #f9fafb;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+.contact-row:hover {
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transform: translateX(-5px);
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.contact-icon.email { background: linear-gradient(135deg, #667eea, #764ba2); }
+.contact-icon.phone { background: linear-gradient(135deg, #10b981, #059669); }
+.contact-icon.location { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+.contact-details {
+    flex: 1;
+}
+
+.contact-details small {
+    display: block;
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.contact-details span {
+    font-size: 1rem;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+/* Quick Actions */
+.quick-action {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    background: #f9fafb;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    text-decoration: none;
+    color: #374151;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.quick-action:last-child {
+    margin-bottom: 0;
+}
+
+.quick-action:hover {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: translateX(-8px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.action-icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.quick-action:hover .action-icon {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    transform: scale(1.1);
+}
+
+.quick-action span {
+    flex: 1;
+    font-weight: 600;
+}
+
+.quick-action .fa-chevron-left {
+    color: #9ca3af;
+    transition: all 0.3s ease;
+}
+
+.quick-action:hover .fa-chevron-left {
+    color: white;
+    transform: translateX(-5px);
+}
+
+/* Info List */
+.info-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.3s ease;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row:hover {
+    background: #f9fafb;
+    border-radius: 12px;
+    margin: 0 -10px;
+    padding: 20px 30px;
+}
+
+.row-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #667eea;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+}
+
+.info-row:hover .row-icon {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.row-content {
+    flex: 1;
+}
+
+.row-content small {
+    display: block;
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+}
+
+.row-content span {
+    font-size: 1.1rem;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.row-content span.highlight {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Security List */
+.security-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.security-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px;
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.security-row.secure {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.04));
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.security-row.warning {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(245, 158, 11, 0.04));
+    border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.security-row:hover {
+    transform: translateX(5px);
+}
+
+.security-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.security-row.secure .security-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.security-row.warning .security-icon {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.security-content {
+    flex: 1;
+}
+
+.security-content span {
+    display: block;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 5px;
+    font-size: 1.05rem;
+}
+
+.security-content small {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.stat-value {
-    display: block;
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: #0F2A4A;
-    line-height: 1;
-    margin-bottom: 8px;
+.status-badge.secure {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
 }
 
-.stat-trend {
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-weight: 600;
+.status-badge.warning {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    animation: badgePulse 2s infinite;
 }
 
-.stat-trend.positive {
-    color: #28a745;
-}
-
-.stat-trend.warning {
-    color: #f57c00;
-}
-
-.stat-trend.neutral {
-    color: #6C757D;
+@keyframes badgePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
 }
 
 /* Responsive */
 @media (max-width: 1200px) {
-    .stats-grid-modern {
+    .stats-row {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .profile-content-grid {
+        grid-template-columns: 320px 1fr;
     }
 }
 
 @media (max-width: 992px) {
-    .profile-grid {
+    .profile-content-grid {
         grid-template-columns: 1fr;
     }
     
-    .profile-hero-content {
+    .profile-header-content {
         flex-direction: column;
         text-align: center;
     }
@@ -925,36 +809,23 @@
     .profile-meta {
         justify-content: center;
     }
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 15px;
+    }
     
-    .info-grid {
+    .stats-row {
         grid-template-columns: 1fr;
     }
     
-    .info-item:nth-child(odd) {
-        border-left: none;
-    }
-    
-    .info-item:not(:last-child) {
-        border-bottom: 1px solid #E9ECEF;
-    }
-    
-    .stats-grid-modern {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 576px) {
-    .profile-hero {
-        padding: 30px;
-        border-radius: 20px;
+    .profile-header {
+        padding: 25px;
     }
     
     .profile-info h1 {
         font-size: 1.8rem;
-    }
-    
-    .profile-container {
-        padding: 15px;
     }
     
     .avatar-circle {
@@ -962,19 +833,6 @@
         height: 90px;
         font-size: 2.2rem;
     }
-    
-    .stats-grid-modern {
-        grid-template-columns: 1fr;
-    }
-    
-    .profile-card {
-        padding: 20px;
-    }
-    
-    .action-link {
-        padding: 14px 16px;
-    }
 }
-
 </style>
 @endsection
