@@ -24,57 +24,51 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --dark-blue: #0F2A4A;
+            --medium-blue: #2C3E50;
+            --light-gray: #F8F9FA;
+            --border-gray: #E9ECEF;
+            --text-dark: #2C3E50;
+            --text-light: #6C757D;
+            --white: #FFFFFF;
+            --gold: #D4AF37;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background: linear-gradient(135deg, #0F2A4A 0%, #1a3a5a 50%, #2C3E50 100%);
             display: flex;
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
         }
 
-        /* Animated Background Shapes */
+        /* Subtle Background Pattern */
         body::before {
             content: '';
             position: fixed;
-            top: -50%;
-            right: -20%;
-            width: 800px;
-            height: 800px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
             z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            bottom: -30%;
-            left: -10%;
-            width: 600px;
-            height: 600px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            animation: float 25s infinite ease-in-out reverse;
-            z-index: 0;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            pointer-events: none;
         }
 
         /* Header */
         .main-header {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 42, 74, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             padding: 15px 0;
             position: relative;
             z-index: 10;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
         .navbar-brand {
@@ -85,15 +79,11 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .navbar-brand i {
             font-size: 1.8rem;
-            background: linear-gradient(135deg, #fff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--gold);
         }
 
         .nav-link {
@@ -107,7 +97,11 @@
         }
 
         .nav-link:hover {
-            color: white !important;
+            color: var(--gold) !important;
+        }
+
+        .nav-link i {
+            color: var(--gold);
         }
 
         /* Main Content */
@@ -121,29 +115,19 @@
             z-index: 5;
         }
 
-        /* Register Card - Glassmorphism */
+        /* Register Card - Professional Design */
         .register-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
+            background: var(--white);
+            border-radius: 16px;
             padding: 40px;
             width: 100%;
             max-width: 600px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15), 
-                        0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+            box-shadow: 0 20px 60px rgba(15, 42, 74, 0.15), 
+                        0 0 0 1px rgba(15, 42, 74, 0.05) inset;
             position: relative;
             overflow: hidden;
             animation: slideUp 0.6s ease-out;
-        }
-
-        .register-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            border-top: 4px solid var(--gold);
         }
 
         @keyframes slideUp {
@@ -166,35 +150,29 @@
         .register-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #0F2A4A, #2C3E50);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3); }
-            50% { box-shadow: 0 10px 40px rgba(16, 185, 129, 0.5); }
+            box-shadow: 0 8px 25px rgba(15, 42, 74, 0.25);
         }
 
         .register-icon i {
             font-size: 2.2rem;
-            color: white;
+            color: var(--gold);
         }
 
         .register-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            color: #1f2937;
+            color: var(--dark-blue);
             margin-bottom: 8px;
         }
 
         .register-header p {
-            color: #6b7280;
+            color: var(--text-light);
             font-size: 0.9rem;
             line-height: 1.5;
         }
@@ -202,14 +180,14 @@
         .register-header p small {
             display: block;
             margin-top: 5px;
-            color: #9ca3af;
+            color: var(--text-light);
             font-size: 0.8rem;
         }
 
         /* Alerts */
         .alert {
             border: none;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 14px 18px;
             margin-bottom: 20px;
             display: flex;
@@ -219,8 +197,9 @@
         }
 
         .alert-danger {
-            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            background: #fee2e2;
             color: #dc2626;
+            border-right: 4px solid #dc2626;
         }
 
         .alert i {
@@ -237,35 +216,35 @@
             align-items: center;
             gap: 8px;
             font-weight: 600;
-            color: #374151;
+            color: var(--text-dark);
             margin-bottom: 8px;
             font-size: 0.85rem;
         }
 
         .form-label i {
-            color: #667eea;
+            color: var(--dark-blue);
             font-size: 0.9rem;
         }
 
         .form-control {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid #e5e7eb;
+            border: 2px solid var(--border-gray);
             border-radius: 12px;
             font-size: 0.95rem;
-            background: #f9fafb;
+            background: var(--light-gray);
             transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--dark-blue);
             background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 4px rgba(15, 42, 74, 0.08);
         }
 
         .form-control::placeholder {
-            color: #9ca3af;
+            color: var(--text-light);
         }
 
         select.form-control {
@@ -284,10 +263,10 @@
         .btn-register {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #0F2A4A, #2C3E50);
             color: white;
             border: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-size: 1.05rem;
             font-weight: 700;
             cursor: pointer;
@@ -296,13 +275,13 @@
             justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 8px 25px rgba(15, 42, 74, 0.25);
             margin: 25px 0;
         }
 
         .btn-register:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(15, 42, 74, 0.35);
         }
 
         /* Extra Links */
@@ -311,7 +290,7 @@
         }
 
         .btn-login-link {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: var(--dark-blue);
             color: white;
             text-decoration: none;
             padding: 12px 24px;
@@ -322,24 +301,26 @@
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 4px 15px rgba(15, 42, 74, 0.2);
         }
 
         .btn-login-link:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 6px 20px rgba(15, 42, 74, 0.3);
             color: white;
+            background: #1a3a5a;
         }
 
         /* Footer */
         .main-footer {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(15, 42, 74, 0.95);
             backdrop-filter: blur(10px);
             color: white;
             padding: 20px 0;
             text-align: center;
             position: relative;
             z-index: 10;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .main-footer p {
@@ -350,7 +331,7 @@
 
         .main-footer i {
             margin-right: 8px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--gold);
         }
 
         /* Responsive */
