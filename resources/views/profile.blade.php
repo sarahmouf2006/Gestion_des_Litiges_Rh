@@ -276,11 +276,10 @@
 .profile-header {
     background: linear-gradient(135deg, #0F2A4A 0%, #1a3a5a 50%, #2C3E50 100%);
     border-radius: 24px;
-
     padding: 40px;
     margin-bottom: 30px;
     color: white;
-    box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 10px 40px rgba(15, 42, 74, 0.3);
 }
 
 .profile-header-content {
@@ -303,7 +302,6 @@
     justify-content: center;
     font-size: 3rem;
     color: #0F2A4A;
-
     position: relative;
     box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
@@ -401,11 +399,11 @@
     flex-shrink: 0;
 }
 
-.stat-icon.blue { background: linear-gradient(135deg, #0F2A4A, #1a3a5a); }
+/* Modern Dark Grey for stat icons - not too dark */
+.stat-icon.blue { background: linear-gradient(135deg, #4A5568, #5A6578); }
 .stat-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
 .stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
-.stat-icon.purple { background: linear-gradient(135deg, #2C3E50, #1a3a5a); }
-
+.stat-icon.purple { background: linear-gradient(135deg, #5A6578, #4A5568); }
 
 .stat-info {
     flex: 1;
@@ -434,17 +432,17 @@
     overflow: hidden;
 }
 
+/* Modern Dark Grey for progress bars */
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #0F2A4A, #2C3E50);
+    background: linear-gradient(90deg, #4A5568, #5A6578);
     border-radius: 3px;
     transition: width 0.5s ease;
 }
 
 .progress-fill.green { background: linear-gradient(90deg, #10b981, #059669); }
 .progress-fill.orange { background: linear-gradient(90deg, #f59e0b, #d97706); }
-.progress-fill.purple { background: linear-gradient(90deg, #2C3E50, #0F2A4A); }
-
+.progress-fill.purple { background: linear-gradient(90deg, #5A6578, #4A5568); }
 
 /* Main Grid */
 .profile-content-grid {
@@ -482,7 +480,6 @@
     color: #D4AF37;
 }
 
-
 /* Card Header */
 .card-header {
     display: flex;
@@ -493,10 +490,11 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
+/* Modern Dark Grey for header icons */
 .header-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
+    background: linear-gradient(135deg, #4A5568, #5A6578);
     border-radius: 14px;
     display: flex;
     align-items: center;
@@ -504,7 +502,6 @@
     color: #D4AF37;
     font-size: 1.3rem;
 }
-
 
 .header-icon.green {
     background: linear-gradient(135deg, #10b981, #059669);
@@ -534,8 +531,8 @@
 }
 
 .contact-row:hover {
-    background: white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: #f3f4f6;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     transform: translateX(-5px);
 }
 
@@ -551,8 +548,8 @@
     flex-shrink: 0;
 }
 
-.contact-icon.email { background: linear-gradient(135deg, #0F2A4A, #2C3E50); }
-
+/* Modern Dark Grey for email icon */
+.contact-icon.email { background: linear-gradient(135deg, #4A5568, #5A6578); }
 .contact-icon.phone { background: linear-gradient(135deg, #10b981, #059669); }
 .contact-icon.location { background: linear-gradient(135deg, #f59e0b, #d97706); }
 
@@ -594,13 +591,13 @@
     margin-bottom: 0;
 }
 
+/* Modern Dark Grey for hover - perfect shade, not too dark */
 .quick-action:hover {
-    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
+    background: linear-gradient(135deg, #4A5568, #5A6578);
     color: white;
     transform: translateX(-8px);
-    box-shadow: 0 8px 25px rgba(15, 42, 74, 0.3);
+    box-shadow: 0 8px 25px rgba(74, 85, 104, 0.3);
 }
-
 
 .action-icon {
     width: 40px;
@@ -610,11 +607,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0F2A4A;
+    color: #4A5568;
     font-size: 1.1rem;
     transition: all 0.3s ease;
 }
-
 
 .quick-action:hover .action-icon {
     background: rgba(255,255,255,0.2);
@@ -661,7 +657,6 @@
     color: white;
 }
 
-
 /* Info List */
 .info-list {
     display: flex;
@@ -688,25 +683,26 @@
     padding: 20px 30px;
 }
 
+/* Modern Dark Grey for row icons */
 .row-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, rgba(15, 42, 74, 0.1), rgba(44, 62, 80, 0.1));
+    background: linear-gradient(135deg, rgba(74, 85, 104, 0.1), rgba(90, 101, 120, 0.1));
     border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0F2A4A;
+    color: #4A5568;
     font-size: 1.3rem;
     transition: all 0.3s ease;
 }
 
+/* Modern Dark Grey for hover */
 .info-row:hover .row-icon {
-    background: linear-gradient(135deg, #0F2A4A, #2C3E50);
+    background: linear-gradient(135deg, #4A5568, #5A6578);
     color: #D4AF37;
     transform: scale(1.1) rotate(5deg);
 }
-
 
 .row-content {
     flex: 1;
@@ -727,13 +723,13 @@
     font-weight: 600;
 }
 
+/* Modern Dark Grey for highlight text */
 .row-content span.highlight {
-    background: linear-gradient(90deg, #0F2A4A, #2C3E50);
+    background: linear-gradient(90deg, #4A5568, #5A6578);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-
 
 /* Security List */
 .security-list {
