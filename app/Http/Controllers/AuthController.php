@@ -69,4 +69,18 @@ public function register(Request $request)
     return redirect()->route('dashboard')->with('success', 'Compte créé avec succès. Vous êtes maintenant connecté.');
 }
 
+public function logout(Request $request)
+{
+    // Clear all session data
+    session()->flush();
+    
+    // Invalidate the session
+    $request->session()->invalidate();
+    
+    // Regenerate CSRF token
+    $request->session()->regenerateToken();
+    
+    return redirect()->route('login')->with('success', 'Vous avez été déconnecté avec succès.');
+}
+
 }

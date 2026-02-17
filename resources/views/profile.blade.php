@@ -155,7 +155,20 @@
                     <span>Historique de connexion</span>
                     <i class="fas fa-chevron-left"></i>
                 </a>
+                
+                <!-- Logout Button -->
+                <form action="{{ route('logout') }}" method="POST" class="m-0">
+                    @csrf
+                    <button type="submit" class="quick-action logout-action w-100 border-0 bg-transparent text-start">
+                        <div class="action-icon logout-icon">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
+                        <span>Déconnexion</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                </form>
             </div>
+
         </div>
 
         <!-- Right Content -->
@@ -614,6 +627,31 @@
     color: white;
     transform: translateX(-5px);
 }
+
+/* Logout Button Specific Styles */
+.logout-action {
+    color: #dc2626;
+}
+
+.logout-action .logout-icon {
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #dc2626;
+}
+
+.logout-action:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+}
+
+.logout-action:hover .logout-icon {
+    background: rgba(255,255,255,0.2);
+    color: white;
+}
+
+.logout-action:hover .fa-chevron-left {
+    color: white;
+}
+
 
 /* Info List */
 .info-list {

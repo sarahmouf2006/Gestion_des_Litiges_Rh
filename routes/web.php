@@ -14,6 +14,9 @@ Route::get('/', function () {
 // إرسال معلومات login
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 
+// Déconnexion
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 // صفحة register
 Route::get('/register', function () {
     return view('register');
